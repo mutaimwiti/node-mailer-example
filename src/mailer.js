@@ -1,16 +1,10 @@
-import mailer from "nodemailer";
+import mailer from 'nodemailer';
+import config from 'config';
+
+const mailerConfig = config.get('mailer');
 
 const send = (done) => {
-  const {HOST, PORT, USERNAME, PASSWORD} = process.env;
-
-  const transport = mailer.createTransport({
-    host: HOST,
-    port: PORT,
-    auth: {
-      user: USERNAME,
-      pass: PASSWORD
-    }
-  });
+  const transport = mailer.createTransport(mailerConfig);
 
   const data = {
     from: '"Acme Team" <no-reply@acme.com>',

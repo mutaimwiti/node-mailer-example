@@ -10,6 +10,7 @@
     "start": "nodemon --exec babel-node index.js"
   },
   "dependencies": {
+    "config": "^3.2.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemailer": "^6.3.1"

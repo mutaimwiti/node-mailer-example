@@ -1,8 +1,5 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import {send} from './mailer';
-
-dotenv.config();
 
 const app = express();
 
