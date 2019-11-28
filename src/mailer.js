@@ -1,11 +1,11 @@
 import mailer from 'nodemailer';
 import config from 'config';
 
-const mailerConfig = config.get('mailer');
+const transport = mailer.createTransport(
+  config.get('mailer')
+);
 
-const send = (done) => {
-  const transport = mailer.createTransport(mailerConfig);
-
+const sendWelcome = (callback) => {
   const data = {
     from: '"Acme Team" <no-reply@acme.com>',
     to: 'foo@acme.com, bar@acme.com',
@@ -15,8 +15,8 @@ const send = (done) => {
   };
 
   transport.sendMail(data, (error, info) => {
-    return done(error, info);
+    return callback(error, info);
   });
 };
 
-export {send};
+export {sendWelcome};
