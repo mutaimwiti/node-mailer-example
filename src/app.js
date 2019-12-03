@@ -9,7 +9,13 @@ scheduleUpdateEmails(() => {
 });
 
 app.get('/send-mail', (req, res) => {
-  sendWelcomeMails();
+  sendWelcomeMails((err) => {
+    return err ?
+      console.error('An error occurred trying to send welcome emails\n' + err)
+      :
+      console.log('Sent welcome emails');
+  });
+
   return res.send("Sending welcome emails");
 });
 

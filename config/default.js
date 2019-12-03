@@ -5,9 +5,16 @@ dotenv.config();
 const {HOST, PORT, USERNAME, PASSWORD} = process.env;
 
 module.exports = {
-  mailer: {
+  defaultMailer: {
     host: HOST,
     port: PORT,
+    auth: {
+      user: USERNAME,
+      pass: PASSWORD
+    }
+  },
+  googleMailer: {
+    service: 'gmail',
     auth: {
       user: USERNAME,
       pass: PASSWORD

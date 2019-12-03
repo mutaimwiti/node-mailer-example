@@ -2,16 +2,16 @@ import mailer from 'nodemailer';
 import config from 'config';
 
 const transport = mailer.createTransport(
-  config.get('mailer')
+  config.get('googleMailer')
 );
 
 const defaults = {
   from: '"Acme Team" <no-reply@acme.com>',
-  to: 'foo@acme.com, bar@acme.com',
+  to: 'mutaimwiti@acme.com',
 };
 
 const send = (data, callback) => {
-  transport.sendMail({...defaults, data}, (error, info) => {
+  transport.sendMail({...defaults, ...data}, (error, info) => {
     return callback(error, info);
   });
 };
